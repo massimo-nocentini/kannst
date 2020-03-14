@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "FFIStructure",
+	"category" : "KANN-uFFI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"OFFSET_C",
+		"OFFSET_G",
+		"OFFSET_MT",
+		"OFFSET_N",
+		"OFFSET_V",
+		"OFFSET_X"
+	],
+	"instvars" : [ ],
+	"name" : "KANN_t",
+	"type" : "normal"
+}

@@ -1,0 +1,27 @@
+{
+	"commentStamp" : "",
+	"super" : "FFIStructure",
+	"category" : "KANN-uFFI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"OFFSET_CHILD",
+		"OFFSET_D",
+		"OFFSET_EXT_FLAG",
+		"OFFSET_EXT_LABEL",
+		"OFFSET_FLAG",
+		"OFFSET_G",
+		"OFFSET_GTMP",
+		"OFFSET_N_CHILD",
+		"OFFSET_N_D",
+		"OFFSET_OP",
+		"OFFSET_PRE",
+		"OFFSET_PTR",
+		"OFFSET_PTR_SIZE",
+		"OFFSET_TMP",
+		"OFFSET_X"
+	],
+	"instvars" : [ ],
+	"name" : "KAD_node_t",
+	"type" : "normal"
+}
