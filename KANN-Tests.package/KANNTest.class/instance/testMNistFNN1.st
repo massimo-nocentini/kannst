@@ -1,26 +1,29 @@
 tests
 testMNistFNN1
 	| anInteger |
+	"First load observations."
 	anInteger := Libkann_data
-		readFromFileNamed:
-			'/home/mn/Developer/snapshots/pharoes/80-timezone/pharo-local/iceberg/massimo-nocentini/kannst/data-and-models/kann-data/mnist-train-x.knd.gz'
+		readFromFileNamed: (self dataPath / 'mnist-train-x.knd.gz') fullName
 		with: [ :x | 
+			"Then load targets."
 			Libkann_data
-				readFromFileNamed:
-					'/home/mn/Developer/snapshots/pharoes/80-timezone/pharo-local/iceberg/massimo-nocentini/kannst/data-and-models/kann-data/mnist-train-y.knd.gz'
+				readFromFileNamed: (self dataPath / 'mnist-train-y.knd.gz') fullName
 				with: [ :y | 
-					| kann_t |
+					"Check that dimensions match."
 					self assert: x n_row equals: y n_row.
-					kann_t := (((Libkann inputLayer: x n_col) dense: 64) relu
+
+					"Build the network."
+					(((Libkann inputLayer: x n_col) dense: 64) relu
 						cost: y n_col
-						type: 2) kann.
-					kann_t
-						trainFNN1: 0.001
-						miniSize: 64
-						maxEpoch: 25
-						maxDropStreak: 10
-						fracVal: 0.1
-						n: x n_row
-						x: x x
-						y: y x ] ].
-	self halt
+						type: 2)
+						withKANN: [ :kann_t | 
+							kann_t
+								trainFNN1: 0.001
+								miniSize: 64
+								maxEpoch: 10
+								maxDropStreak: 10
+								fracVal: 0.1
+								n: x n_row
+								x: x x
+								y: y x.
+							self halt ] ] ]
