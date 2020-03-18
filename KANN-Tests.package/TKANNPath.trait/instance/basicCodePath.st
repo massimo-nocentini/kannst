@@ -1,5 +1,5 @@
 tests
-dataPath
+basicCodePath
 	^ (IceRepository
 		registeredRepositoryIncludingPackage: 'KANN' asPackage)
-		basicCodeDirectory / 'data-and-models' / 'kann-data'
+		basicCodeDirectory

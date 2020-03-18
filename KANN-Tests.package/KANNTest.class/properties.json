@@ -1,11 +1,13 @@
 {
-	"commentStamp" : "",
-	"super" : "TestCase",
-	"category" : "KANN-Tests",
-	"classinstvars" : [ ],
-	"pools" : [ ],
+	"classtraitcomposition" : "TKANNPath classTrait",
 	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "KANNTest",
-	"type" : "normal"
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"traitcomposition" : "TKANNPath",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "KANN-Tests"
 }
