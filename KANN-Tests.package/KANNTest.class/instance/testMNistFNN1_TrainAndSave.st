@@ -8,14 +8,13 @@ testMNistFNN1_TrainAndSave
 	Libkann_data
 		readFromFileNamed: (self dataPath / 'mnist-train-x.knd.gz') fullName
 		with: [ :x | 
-			self halt.
 			"Then load targets."
 			Libkann_data
 				readFromFileNamed: (self dataPath / 'mnist-train-y.knd.gz') fullName
 				with: [ :y | 
 					"Check that dimensions match."
 					self assert: x n_row equals: y n_row.
-					self halt.
+
 					"Build the network"
 					self
 						input: x n_col

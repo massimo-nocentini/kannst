@@ -1,6 +1,6 @@
 tests
 testMNistFNN1_LoadAndApply
-	| predictions indicators contents |
+	| predictions indicators contents trues falses |
 	predictions := Libkann
 		loadFromFileNamed: (self modelsPath / 'mlp.kan') fullName
 		with: [ :kann_t | 
@@ -29,4 +29,7 @@ testMNistFNN1_LoadAndApply
 						yourself ].
 			(y xValue collect: #truncated) with: P collect: #= ].
 	contents := indicators asBag valuesAndCounts.
-	self assert: (contents at: true) >= (contents at: false)
+	trues := contents at: true.
+	falses := contents at: false.
+	self assert: trues >= falses.
+	self assert: trues / (trues + falses) > 0.9
