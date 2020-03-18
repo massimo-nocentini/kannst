@@ -1,0 +1,13 @@
+{
+	"classtraitcomposition" : "TKANNPath classTrait",
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KANN_data_tTest",
+	"commentStamp" : "<historical>",
+	"super" : "TestCase",
+	"traitcomposition" : "TKANNPath",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "KANN-uFFI-Tests"
+}
