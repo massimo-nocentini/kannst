@@ -23,11 +23,15 @@ testMNistFNN1_LoadAndApply
 			P := predictions
 				collect: [ :each | 
 					| argMax |
-					argMax := each argOpt: #> init: Float negativeInfinity.
+					argMax := each
+						argOpt: [ :f :opt | f > opt ]
+						init: Float negativeInfinity.
 					(Array new: y n_col withAll: 0)
 						at: argMax put: 1;
 						yourself ].
-			(y xValue collect: #truncated) with: P collect: #= ].
+			(y xValue collect: #truncated)
+				with: P
+				collect: [ :target :predicted | target = predicted ] ].
 	contents := indicators asBag valuesAndCounts.
 	trues := contents at: true.
 	falses := contents at: false.

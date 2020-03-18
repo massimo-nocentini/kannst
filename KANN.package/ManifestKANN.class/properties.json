@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "mn 3/18/2020 17:42",
+	"super" : "PackageManifest",
+	"category" : "KANN-Manifest",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ManifestKANN",
+	"type" : "normal"
+}
