@@ -1,0 +1,31 @@
+tests
+testMNistAE_TrainAndSave_withCallback
+	| stats |
+	stats := self
+		MNistFNN1_TrainAndSave_with: [ :kann_t :x :y | 
+			| epochs title stream |
+			stream := Array new writeStream.
+			epochs := 50.
+			title := 'Training on MNIST data: '.
+
+			"Start progressing"
+			UIManager default
+				displayProgress: title
+				from: 1
+				to: epochs
+				during: [ :bar | 
+					"Train the network."
+					"(kann_t mt: 10 maxBatchSize: 64)"
+					kann_t
+						trainFNN1: 0.01
+						miniSize: 64
+						maxEpoch: epochs
+						maxDropStreak: 10
+						fracVal: 0.1
+						n: x n_row
+						x: x x
+						y: x x
+						with: (self mlpStatsBlockForJob: bar title: title stream: stream) ].
+
+			"Return stats."
+			stream contents ]
