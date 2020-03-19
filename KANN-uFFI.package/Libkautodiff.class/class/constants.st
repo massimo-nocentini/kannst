@@ -1,4 +1,4 @@
-as yet unclassified
+utilities
 constants
 	^ Dictionary new
 		at: #KAD_MAX_DIM put: 4;

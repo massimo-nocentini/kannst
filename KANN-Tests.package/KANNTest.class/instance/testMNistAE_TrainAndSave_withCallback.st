@@ -2,7 +2,7 @@ tests
 testMNistAE_TrainAndSave_withCallback
 	| stats |
 	stats := self
-		MNistFNN1_TrainAndSave_with: [ :kann_t :x :y | 
+		MNist_AE_TrainAndSave_with: [ :kann_t :x :y | 
 			| epochs title stream |
 			stream := Array new writeStream.
 			epochs := 50.
@@ -15,7 +15,6 @@ testMNistAE_TrainAndSave_withCallback
 				to: epochs
 				during: [ :bar | 
 					"Train the network."
-					"(kann_t mt: 10 maxBatchSize: 64)"
 					kann_t
 						trainFNN1: 0.01
 						miniSize: 64
@@ -24,8 +23,8 @@ testMNistAE_TrainAndSave_withCallback
 						fracVal: 0.1
 						n: x n_row
 						x: x x
-						y: x x
-						with: (self mlpStatsBlockForJob: bar title: title stream: stream) ].
-
+						y: y x	"
+						with: (self mlpStatsBlockForJob: bar title: title stream: stream)" ].
+			self halt.
 			"Return stats."
 			stream contents ]

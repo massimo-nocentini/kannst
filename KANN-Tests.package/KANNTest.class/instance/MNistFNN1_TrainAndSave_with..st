@@ -2,7 +2,10 @@ utilities
 MNistFNN1_TrainAndSave_with: aBlock
 	""
 
-	Libkann srand: 11.	"Initialize the random generator."
+	"Trap on division by zero and initialize the random generator."
+
+	Libkautodiff trap_fe.
+	Libkann srand: 11.
 
 	"Load training data."
 	^ Libkann_data

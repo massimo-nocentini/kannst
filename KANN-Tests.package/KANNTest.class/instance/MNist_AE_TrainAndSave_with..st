@@ -2,6 +2,9 @@ utilities
 MNist_AE_TrainAndSave_with: aBlock
 	""
 
+	"Trap on division by zero and initialize the random generator."
+
+	Libkautodiff trap_fe.
 	Libkann srand: 11.	"Initialize the random generator."
 
 	"Load training data."
@@ -19,7 +22,7 @@ MNist_AE_TrainAndSave_with: aBlock
 					result := aBlock value: kann_t value: x value: x.
 
 					"Save the trained network before returning."
-					kann_t saveToFileNamed: self mlpModelPath fullName.
+					kann_t saveToFileNamed: self aeModelPath fullName.
 
 					"Finally return the computed result."
 					result ] ]

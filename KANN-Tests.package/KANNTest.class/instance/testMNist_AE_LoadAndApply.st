@@ -1,0 +1,3 @@
+tests
+testMNist_AE_LoadAndApply
+	self MNist_LoadAndApplyFromFileNamed: self aeModelPath fullName
