@@ -49,7 +49,4 @@ testMNistFNN1_TrainAndSave_withCallback
 							kann_t saveToFileNamed: self mlpModelPath fullName.
 
 							"Return stats."
-							stream contents ].
-
-					"Debug here."
-					self halt ] ]
+							stream contents ] ] ]

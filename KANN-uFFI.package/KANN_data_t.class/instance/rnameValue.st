@@ -1,5 +1,4 @@
 accessing structure variables
 rnameValue
-	^ (self rname getHandle
-		readArrayOf: #'char *'
-		until: [ :a :i | i > self n_row ]) collect: #readString
+	^ (self rname asArrayOf: #'char *' size: self n_row)
+		collect: #readString

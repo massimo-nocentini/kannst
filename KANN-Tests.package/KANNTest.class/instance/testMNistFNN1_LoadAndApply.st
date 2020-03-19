@@ -15,9 +15,18 @@ testMNistFNN1_LoadAndApply
 					"Load the test observations"
 					xx x_rows
 						collect: [ :aFloatAddress | 
-							(kann_t apply1: aFloatAddress) getHandle
-								readArrayOf: #float
-								until: [ :f :j | j > kann_t dimOut ] ] ] ].
+							| handle probs |
+							"Apply the network."
+							handle := kann_t apply1: aFloatAddress.
+
+							"and return the array with probabilities"
+							probs := handle asArrayOf: #float size: kann_t dimOut.
+
+							"Check that it is actually a distribution"
+							"self assert: (probs sum closeTo: 1 precision: 1e-1)."
+
+							"Finally return the predicted array"
+							probs ] ] ].
 	indicators := Libkann_data
 		readFromFileNamed: (self dataPath / 'mnist-test-y.knd.gz') fullName
 		with: [ :y | 

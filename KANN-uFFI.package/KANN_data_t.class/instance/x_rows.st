@@ -1,5 +1,3 @@
 accessing structure variables
 x_rows
-	^ self x getHandle
-		readArrayOf: #'float *'
-		until: [ :a :j | j > self n_row ]
+	^ self x asArrayOf: #'float *' size: self n_row
