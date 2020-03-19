@@ -2,16 +2,18 @@ tests
 testMNistFNN1_LoadAndApply
 	| predictions indicators contents trues falses |
 	predictions := Libkann
-		loadFromFileNamed: (self modelsPath / 'mlp.kan') fullName
+		loadFromFileNamed: self mlpModelPath fullName
 		with: [ :kann_t | 
 			kann_t switchToPrediction.
 			"Apply it."
 			Libkann_data
 				readFromFileNamed: (self dataPath / 'mnist-test-x.knd.gz') fullName
 				with: [ :xx | 
-					(xx x getHandle
-						readArrayOf: #'float *'
-						until: [ :a :j | j > xx n_row ])
+					"Ensure dimensions match."
+					self assert: kann_t dimIn equals: xx n_col.
+
+					"Load the test observations"
+					xx x_rows
 						collect: [ :aFloatAddress | 
 							(kann_t apply1: aFloatAddress) getHandle
 								readArrayOf: #float
@@ -36,4 +38,4 @@ testMNistFNN1_LoadAndApply
 	trues := contents at: true.
 	falses := contents at: false.
 	self assert: trues >= falses.
-	self assert: trues / (trues + falses) > 0.9
+	self assert: trues / (trues + falses) > 0.95

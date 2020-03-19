@@ -1,8 +1,8 @@
 tests
 testMNistFNN1_TrainAndSave
-	| modelPath |
-	"File path to the model saved after training."
-	modelPath := self modelsPath / 'mlp.kan'.
+	""
+
+	Libkann srand: 11.	"Initialize the random generator."
 
 	"Load training data."
 	Libkann_data
@@ -20,8 +20,7 @@ testMNistFNN1_TrainAndSave
 						input: x n_col
 						output: y n_col
 						loss: (Libkann constants at: #KANN_C_CEB)
-						hiddenLayers: 1
-						hiddenNeuronsPerLayer: 64
+						hiddenLayersWithNeurons: {64}
 						dropout: 0 asFloat
 						withKANN: [ :kann_t | 
 							"Train the network."
@@ -36,4 +35,4 @@ testMNistFNN1_TrainAndSave
 								y: y x.
 
 							"And save it."
-							kann_t saveToFileNamed: modelPath fullName ] ] ]
+							kann_t saveToFileNamed: self mlpModelPath fullName ] ] ]
