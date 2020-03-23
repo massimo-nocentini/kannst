@@ -1,5 +1,5 @@
 tests
-testMNistAE_TrainAndSave_withCallback
+testMNist_AE_TrainAndSave_withCallback
 	| stats |
 	stats := self
 		MNist_AE_TrainAndSave_with: [ :kann_t :x :y | 
@@ -23,8 +23,8 @@ testMNistAE_TrainAndSave_withCallback
 						fracVal: 0.1
 						n: x n_row
 						x: x x
-						y: y x	"
-						with: (self mlpStatsBlockForJob: bar title: title stream: stream)" ].
-			self halt.
+						y: y x
+						with: (self mlpStatsBlockForJob: bar title: title stream: stream) ].
+
 			"Return stats."
 			stream contents ]

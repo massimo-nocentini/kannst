@@ -7,5 +7,5 @@ fieldsDesc
 	float **x;
 	char **rname;
 	char **cname;
-	int *grp;
+	void *grp;
 	)

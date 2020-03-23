@@ -5,7 +5,7 @@ MNist_AE_TrainAndSave_with: aBlock
 	"Trap on division by zero and initialize the random generator."
 
 	Libkautodiff trap_fe.
-	Libkann srand: 11.	"Initialize the random generator."
+	"Libkann srand: 11."	"Initialize the random generator."
 
 	"Load training data."
 	^ Libkann_data
