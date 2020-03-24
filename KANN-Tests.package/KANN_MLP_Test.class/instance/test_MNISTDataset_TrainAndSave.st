@@ -1,5 +1,5 @@
 tests
-testMNistFNN1_TrainAndSave
+test_MNISTDataset_TrainAndSave
 	self
 		onMNISTDataset_build: [ :x :y | 
 			({64 . 64 . 64 . 64}

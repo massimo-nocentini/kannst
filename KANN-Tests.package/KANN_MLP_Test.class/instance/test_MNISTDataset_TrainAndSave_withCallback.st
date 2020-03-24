@@ -1,5 +1,5 @@
 tests
-testMNistFNN1_TrainAndSave_withCallback
+test_MNISTDataset_TrainAndSave_withCallback
 	self
 		onMNISTDataset_build: [ :x :y | 
 			({64 . 64 . 64 . 64}
@@ -19,6 +19,13 @@ testMNistFNN1_TrainAndSave_withCallback
 				from: 1
 				to: epochs
 				during: [ :bar | 
+					| handler |
+					handler := LibkannTrainFNN1Handler new
+						job: bar;
+						title: title;
+						stream: stream;
+						ffiClosure.
+
 					"Train the network."
 					(kann_t mt: 10 maxBatchSize: 64)
 						trainFNN1: 0.001
@@ -29,7 +36,7 @@ testMNistFNN1_TrainAndSave_withCallback
 						n: x n_row
 						x: x x
 						y: y x
-						with: (self mlpStatsBlockForJob: bar title: title stream: stream) ].
+						with: handler ].
 
 			"Return stats."
 			stream contents ]

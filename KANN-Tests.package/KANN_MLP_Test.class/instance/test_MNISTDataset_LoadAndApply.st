@@ -1,5 +1,5 @@
 tests
-testMNistFNN1_LoadAndApply
+test_MNISTDataset_LoadAndApply
 	| indicators contents trues falses |
 	indicators := self
 		onMNISTDataset_load: self mlpModelPath fullName
@@ -18,7 +18,6 @@ testMNistFNN1_LoadAndApply
 				with: P
 				collect: [ :target :predicted | target = predicted ] ].
 	contents := indicators asBag valuesAndCounts.
-	self halt.
 	trues := contents at: true.
 	falses := contents at: false.
 	self assert: trues >= falses.

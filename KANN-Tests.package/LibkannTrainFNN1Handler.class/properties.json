@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "KANN-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"job",
+		"title",
+		"stream"
+	],
+	"name" : "LibkannTrainFNN1Handler",
+	"type" : "normal"
+}
