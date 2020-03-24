@@ -1,7 +1,13 @@
 tests
 testMNistFNN1_TrainAndSave_withCallback
 	self
-		MNistFNN1_TrainAndSave_with: [ :kann_t :x :y | 
+		onMNISTDataset_build: [ :x :y | 
+			({64 . 64 . 64 . 64}
+				inject: (Libkann inputLayer: x n_col)
+				into: [ :t :n_h_neurons | (t dense: n_h_neurons) relu dropout: 0 asFloat ])
+				cost: y n_col
+				type: (Libkann constants at: #KANN_C_CEB) ]
+		train: [ :kann_t :x :y | 
 			| epochs title stream |
 			stream := Array new writeStream.
 			epochs := 50.
@@ -27,3 +33,4 @@ testMNistFNN1_TrainAndSave_withCallback
 
 			"Return stats."
 			stream contents ]
+		save: self mlpModelPath fullName

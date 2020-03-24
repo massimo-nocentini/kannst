@@ -1,3 +1,0 @@
-tests
-testMNistFNN1_LoadAndApply
-	self MNist_LoadAndApplyFromFileNamed: self mlpModelPath fullName
