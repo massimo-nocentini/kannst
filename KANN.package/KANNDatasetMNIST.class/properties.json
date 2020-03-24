@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KANNDataset",
+	"category" : "KANN",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KANNDatasetMNIST",
+	"type" : "normal"
+}
