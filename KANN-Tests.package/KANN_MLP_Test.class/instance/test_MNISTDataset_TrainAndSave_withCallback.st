@@ -11,7 +11,7 @@ test_MNISTDataset_TrainAndSave_withCallback
 			| epochs title stream |
 			stream := Array new writeStream.
 			epochs := 50.
-			title := 'Training on MNIST data: '.
+			title := 'MLP training on MNIST data: '.
 
 			"Start progressing"
 			UIManager default

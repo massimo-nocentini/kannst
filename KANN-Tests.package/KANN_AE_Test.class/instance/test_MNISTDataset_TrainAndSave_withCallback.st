@@ -1,12 +1,12 @@
 tests
-testMNist_AE_TrainAndSave_withCallback
-	| stats |
-	stats := self
-		MNist_AE_TrainAndSave_with: [ :kann_t :x :y | 
+test_MNISTDataset_TrainAndSave_withCallback
+	self
+		onMNISTDataset_build: [ :x :y | self network: x ]
+		train: [ :kann_t :x :y | 
 			| epochs title stream |
 			stream := Array new writeStream.
 			epochs := 50.
-			title := 'Training on MNIST data: '.
+			title := 'AE training on MNIST data: '.
 
 			"Start progressing"
 			UIManager default
@@ -14,6 +14,13 @@ testMNist_AE_TrainAndSave_withCallback
 				from: 1
 				to: epochs
 				during: [ :bar | 
+					| handler |
+					handler := LibkannTrainFNN1Handler new
+						job: bar;
+						title: title;
+						stream: stream;
+						ffiClosure.
+
 					"Train the network."
 					kann_t
 						trainFNN1: 0.01
@@ -24,7 +31,8 @@ testMNist_AE_TrainAndSave_withCallback
 						n: x n_row
 						x: x x
 						y: y x
-						with: (self mlpStatsBlockForJob: bar title: title stream: stream) ].
+						with: handler ].
 
 			"Return stats."
 			stream contents ]
+		save: self aeModelPath fullName
