@@ -1,13 +1,11 @@
 {
-	"classtraitcomposition" : "TKANNPath classTrait",
+	"commentStamp" : "",
+	"super" : "KANN_AE_Test",
+	"category" : "KANN-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "KANN_VAE_Test",
-	"commentStamp" : "",
-	"super" : "KANN_AE_Test",
-	"traitcomposition" : "TKANNPath",
-	"type" : "normal",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"category" : "KANN-Tests"
+	"type" : "normal"
 }
