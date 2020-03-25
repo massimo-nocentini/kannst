@@ -6,7 +6,7 @@ test_MNISTDataset_TrainAndSave
 			kann_t
 				trainFNN1: 0.01
 				miniSize: 64
-				maxEpoch: 50
+				maxEpoch: 200
 				maxDropStreak: 10
 				fracVal: 0.1
 				n: x n_row

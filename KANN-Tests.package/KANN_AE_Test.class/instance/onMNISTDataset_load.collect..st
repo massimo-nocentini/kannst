@@ -4,7 +4,7 @@ onMNISTDataset_load: aFilename collect: aBlock
 		loadFromFileNamed: aFilename
 		with: [ :kann_t | 
 			"Use the trained network for prediction."
-			kann_t switchToPrediction.
+			self switchKANN_t: kann_t.
 
 			"Apply it."
 			Libkann_data
