@@ -4,9 +4,12 @@ test_MNISTDataset_LoadAndApply
 	predicted := self
 		onMNISTDataset_load: self aeModelPath fullName
 		collect: [ :x :p | 
-			self dataPath / 'mnist-test-x-ae.knd'
+			self encodingPath
 				writeStreamDo: [ :aStream | 
-					aStream nextPutAll: (Character tab join: x cnameValue).
+					aStream
+						nextPutAll: '#no:truth';
+						tab;
+						nextPutAll: (Character tab join: x cnameValue).
 					x rowsStream contents
 						do: [ :anAssoc | 
 							aStream
