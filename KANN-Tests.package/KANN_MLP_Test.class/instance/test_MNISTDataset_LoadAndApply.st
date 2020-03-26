@@ -20,5 +20,6 @@ test_MNISTDataset_LoadAndApply
 	contents := indicators asBag valuesAndCounts.
 	trues := contents at: true.
 	falses := contents at: false.
+	self halt.
 	self assert: trues >= falses.
-	self assert: trues / (trues + falses) > 0.95
+	self assert: (trues / (trues + falses)) asFloat > 0.95

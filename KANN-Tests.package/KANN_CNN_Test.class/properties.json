@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KANN_MLP_Test",
+	"category" : "KANN-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KANN_CNN_Test",
+	"type" : "normal"
+}

@@ -1,12 +1,7 @@
 tests
 test_MNISTDataset_TrainAndSave_withCallback
 	self
-		onMNISTDataset_build: [ :x :y | 
-			({64 . 64 . 64 . 64}
-				inject: (Libkann inputLayer: x n_col)
-				into: [ :t :n_h_neurons | (t dense: n_h_neurons) relu dropout: 0 asFloat ])
-				cost: y n_col
-				type: (Libkann constants at: #KANN_C_CEB) ]
+		onMNISTDataset_build: [ :x :y | self network: x target: y ]
 		train: [ :kann_t :x :y | 
 			| epochs title stream |
 			stream := Array new writeStream.
@@ -27,7 +22,7 @@ test_MNISTDataset_TrainAndSave_withCallback
 						ffiClosure.
 
 					"Train the network."
-					(kann_t mt: 10 maxBatchSize: 64)
+					(kann_t mt: 20 maxBatchSize: 64)
 						trainFNN1: 0.001
 						miniSize: 64
 						maxEpoch: epochs
