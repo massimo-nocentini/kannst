@@ -1,6 +1,6 @@
 tests
 testKANN_load_Bit_data_t
-	| d |
+	| d max w |
 	d := Bit_data_t new.
 	(self dataPath / 'add100-train.txt') contents lines
 		do: [ :line | 
@@ -12,32 +12,39 @@ testKANN_load_Bit_data_t
 			d n = d m
 				ifTrue: [ d
 						accessor: #m
-						update: [ :m | 
+							update: [ :m | 
 							m = 0
 								ifTrue: [ 256 ]
-								ifFalse: [ m << 1 ] ].
-					d realloc: #x size: d m * d n_in * 8.
-					d realloc: #y size: d m * 8 ].
-
-			"resolve the type for uint64"
-			type := FFIExternalType resolveType: #'uint64 *'.
-
-			"Build the corresponding external array"
-			array
-				asExternalArrayOf: #uint64
-				with: [ :ea | 
-					"and use it to access the given handler."
-					LibC uniqueInstance
-						memCopy: ea getHandle
-						to: (type handle: d x getHandle at: d n * d n_in + 1)
-						size: d n_in * 8 ].
+								ifFalse: [ m << 1 ] ];
+						accessor: #x
+							update:
+								[ :x | (Array new: d m * d n_in withAll: 0) replaceFrom: 1 to: x size with: x ];
+						accessor: #y
+							update: [ :y | (Array new: d m withAll: 0) replaceFrom: 1 to: y size with: y ] ].
+			d
+				accessor: #x
+				update: [ :x | 
+					| chunk start |
+					chunk := array copyFrom: 1 to: d n_in.
+					start := d n * d n_in.
+					x replaceFrom: start + 1 to: start + chunk size with: chunk ].
 
 			"Equivalent increment as in `d->y[d->n++]` because Smalltalk uses 1-based indexing."
 			d accessor: #n update: [ :n | n + 1 ].
+			d y at: d n put: (array at: d n_in + 1) ].
 
-			"Set the value for `y` too."
-			type
-				handle: d y getHandle
-				at: d n
-				put: ((array at: d n_in + 1) asExternalAddressOfType: #uint64) ].
+	"Computing the max"
+	max := Float negativeInfinity.
+	0 to: d n - 1 do: [ :i | 
+		| t |
+		t := i * d n_in.
+		1 to: d n_in do: [ :j | max := max max: (d x at: t + j) ].
+		max := max max: (d y at: i + 1) ].
+
+	"Set a final slot"
+	[ max = 0 ]
+		whileFalse: [ d accessor: #ulen update: [ :ulen | ulen + 1 ].
+			max := max >> 1 ].
+
+	"Debug"
 	self halt
