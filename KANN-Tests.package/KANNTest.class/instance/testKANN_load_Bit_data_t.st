@@ -1,10 +1,10 @@
 tests
 testKANN_load_Bit_data_t
-	| d max w |
+	| d max |
 	d := Bit_data_t new.
 	(self dataPath / 'add100-train.txt') contents lines
 		do: [ :line | 
-			| array type |
+			| array |
 			array := (line splitOn: Character tab)
 				collect: [ :s | Number readFrom: s trim ]
 				as: Array.
@@ -46,5 +46,5 @@ testKANN_load_Bit_data_t
 		whileFalse: [ d accessor: #ulen update: [ :ulen | ulen + 1 ].
 			max := max >> 1 ].
 
-	"Debug"
-	self halt
+	"Return the built structure"
+	^ d
