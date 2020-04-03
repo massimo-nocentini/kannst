@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "KANN-uFFI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"n_in",
+		"ulen",
+		"n",
+		"m",
+		"x",
+		"y"
+	],
+	"name" : "Bit_data_t",
+	"type" : "normal"
+}
