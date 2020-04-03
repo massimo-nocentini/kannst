@@ -1,43 +1,51 @@
 tests
 train: kann_t data: bit_data_t lr: lr mini_size: mini_size max_epoch: max_epoch n_threads: n_threads
 	| n_var |
-	self halt.
 	n_var := kann_t size_var.
-	FFIArray
+	FFIExternalArray
 		newArrayTypeOf: #float
 		size: n_var
 		with: [ :r | 
-			FFIArray
+			r atAllPut: 0.	"to simulate `calloc` behavior"
+			FFIExternalArray
 				newArrayTypeOf: #'float *'
 				size: bit_data_t ulen
 				with: [ :x | 
-					FFIArray
+					FFIExternalArray
 						newArrayTypeOf: #'float *'
 						size: bit_data_t ulen
 						with: [ :y | 
-							1 to: bit_data_t ulen do: [ :i | 
+							1 to: bit_data_t ulen do: [ :j | 
 								x
-									at: i
-									put: (FFIArray newArrayTypeOf: #float size: mini_size * bit_data_t n_in).
+									at: j
+									put:
+										(FFIExternalArray
+											externalNewType: #float
+											size: mini_size * bit_data_t n_in) getHandle.
 								y
-									at: i
-									put: (FFIArray newArrayTypeOf: #float size: mini_size * 2) ].
-							FFIArray
+									at: j
+									put:
+										(FFIExternalArray externalNewType: #float size: mini_size * 2)
+											getHandle ].
+							FFIExternalArray
 								newArrayTypeOf: #int
 								size: bit_data_t n
 								with: [ :shuf | 
 									| ua best_cost |
+									"Some init"
 									best_cost := Float infinity.
-									Libkann shuffle: bit_data_t n array: shuf.
+									Libkann shuffle: bit_data_t n array: shuf getHandle.
+
+									"Unroll the RNN"
 									ua := (kann_t unroll: bit_data_t ulen)
 										set_batch_size: mini_size;
 										mt: n_threads maxBatchSize: mini_size;
 										feed_bind: (Libkann constants at: #KANN_F_IN)
 											label: 0
-											arrays: x;
+											arrays: x getHandle;
 										feed_bind: (Libkann constants at: #KANN_F_TRUTH)
 											label: 0
-											arrays: y;
+											arrays: y getHandle;
 										switchToTraining;
 										yourself.
 
@@ -51,15 +59,16 @@ train: kann_t data: bit_data_t lr: lr mini_size: mini_size max_epoch: max_epoch 
 													| s |
 													s := shuf at: j + b + 1.
 													1 to: bit_data_t n_in do: [ :i | 
-														(x at: k + 1)
+														(FFIExternalArray fromHandle: (x at: k + 1) getHandle type: #float)
 															at: b * bit_data_t n_in + i
 															put: (bit_data_t x at: s * bit_data_t n_in + i) >> k & 1 ].
-													(y at: k + 1)
+													(FFIExternalArray
+														fromHandle: (y at: k + 1) getHandle
+														type: #float)
 														at: b * 2 + 1 put: 0;
-														at: b * 2 + 2 put: 0.
-													(y at: k + 1)
-														at: b * 2 + ((bit_data_t y at: s) >> k & 1) + 1
-														put: 1 ] ].
+														at: b * 2 + 2 put: 0;
+														at: b * 2 + ((bit_data_t y at: s + 1) >> k & 1) + 1
+															put: 1 ] ].
 
 											"some increments."
 											cost := (ua cost: 0 grad: 1) * bit_data_t ulen * mini_size
@@ -70,17 +79,24 @@ train: kann_t data: bit_data_t lr: lr mini_size: mini_size max_epoch: max_epoch 
 											Libkann
 												RMSprop: n_var
 												lr: lr
-												vlr: 0
+												vlr: ExternalAddress null
 												decay: 0.9
 												gradient: ua g
 												variables: ua x
-												memory: r ].
+												memory: r getHandle ].
 
 										"update the best cost and save the model in case of a new record."
 										cost < best_cost
-											ifTrue: [ best_cost := cost.
+											ifTrue: [ Transcript traceCr: 'model saved'.
+												best_cost := cost.
 												kann_t
-													saveToFileNamed: (self modelsPath / 'RNN.kan') fullName ] ] ].
+													saveToFileNamed: (self modelsPath / 'RNN.kan') fullName ].
+										Transcript
+											traceCr:
+												('epoch: {1}; cost: {2}'
+													format:
+														{epoch.
+														(cost / tot)}) ] ].
 
 							"release inner external arrays"
 							x do: #free.
