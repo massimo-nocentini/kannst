@@ -3,6 +3,7 @@ testRNN
 	| d rnn_flag kad_node_t |
 	rnn_flag := (Libkann constants at: #KANN_RNN_VAR_H0)
 		| (Libkann constants at: #KANN_RNN_NORM).
+"	Libkautodiff trap_fe."
 	Libkann srand: 11.
 	d := self testKANN_load_Bit_data_t.
 	kad_node_t := {64}
