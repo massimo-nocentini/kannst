@@ -66,12 +66,12 @@ train: kann_t data: bit_data_t lr: lr mini_size: mini_size max_epoch: max_epoch 
 						memory: r getHandle ].
 
 				"update the best cost and save the model in case of a new record."
-				"										cost < best_cost
-											ifTrue: [ best_cost := cost.
-												kann_t
-													saveToFileNamed: (self modelsPath / 'RNN.kan') fullName.
-												Transcript traceCr: 'model saved' ].
-"
+				cost < best_cost
+					ifTrue: [ best_cost := cost.
+						kann_t saveToFileNamed: (self modelsPath / 'RNN.kan') fullName.
+						Transcript traceCr: 'model saved' ].
+
+				"simple debug, sostitute it with the progress bar."
 				Transcript
 					traceCr:
 						('epoch: {1}; cost: {2}'

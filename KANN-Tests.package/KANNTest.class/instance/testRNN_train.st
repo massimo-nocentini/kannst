@@ -1,5 +1,5 @@
 tests
-testRNN
+testRNN_train
 	| d rnn_flag kad_node_t |
 	rnn_flag := (Libkann constants at: #KANN_RNN_VAR_H0)
 		| (Libkann constants at: #KANN_RNN_NORM).

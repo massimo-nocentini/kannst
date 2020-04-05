@@ -4,19 +4,10 @@ testKANN_load_Bit_data_t
 	d := Bit_data_t new.
 	(self dataPath / 'add100-train.txt') contents lines
 		do: [ :line | 
-			| array tuple |
-			tuple := (line splitOn: Character tab)
+			| array |
+			array := (line splitOn: Character space)
 				collect: [ :s | Number readFrom: s trim ]
 				as: Array.
-			array := OrderedCollection new
-				add: tuple first;
-				add: tuple second;
-				add: tuple second;
-				add: tuple second;
-				add: tuple third;
-				add: tuple third;
-				add: tuple third;
-				yourself.
 			d n_in: array size - 1.
 			d n = d m
 				ifTrue: [ d
@@ -55,7 +46,7 @@ testKANN_load_Bit_data_t
 		whileFalse: [ d accessor: #ulen update: [ :ulen | ulen + 1 ].
 			max := max >> 1 ].
 	self
-		assert: 6 equals: d n_in;
+		assert: 2 equals: d n_in;
 		assert: 15 equals: d ulen;
 		assert: 30000 equals: d n;
 		assert: 32768 equals: d m.
