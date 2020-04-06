@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KANN_RNN_Addition_Test",
+	"category" : "KANN-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KANN_RNN_Product_Test",
+	"type" : "normal"
+}

@@ -2,7 +2,7 @@ tests
 testKANN_load_Bit_data_t
 	| d max |
 	d := Bit_data_t new.
-	(self dataPath / 'add100-train.txt') contents lines
+	self trainsetPath contents lines
 		do: [ :line | 
 			| array |
 			array := (line splitOn: Character space)
@@ -45,11 +45,9 @@ testKANN_load_Bit_data_t
 	[ max = 0 ]
 		whileFalse: [ d accessor: #ulen update: [ :ulen | ulen + 1 ].
 			max := max >> 1 ].
-	self
-		assert: 2 equals: d n_in;
-		assert: 15 equals: d ulen;
-		assert: 30000 equals: d n;
-		assert: 32768 equals: d m.
+
+	"Some checks."
+	self assertBit_load_t: d.
 
 	"Return the built structure"
 	^ d

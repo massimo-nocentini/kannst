@@ -1,0 +1,3 @@
+tests
+firstArg: anInteger
+	^ anInteger

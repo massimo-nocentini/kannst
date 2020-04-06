@@ -1,0 +1,7 @@
+tests
+assertBit_load_t: d
+	self
+		assert: 2 equals: d n_in;
+		assert: 20 equals: d ulen;
+		assert: 30000 equals: d n;
+		assert: 32768 equals: d m
