@@ -2,7 +2,7 @@
 	"classtraitcomposition" : "TKANNPath classTrait",
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KANNTest",
+	"name" : "KANN_RNN_Test",
 	"commentStamp" : "",
 	"super" : "TestCase",
 	"traitcomposition" : "TKANNPath",

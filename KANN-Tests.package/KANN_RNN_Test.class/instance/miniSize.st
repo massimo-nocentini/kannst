@@ -1,0 +1,3 @@
+tests
+miniSize
+	^ 64

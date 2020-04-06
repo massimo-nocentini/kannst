@@ -7,25 +7,22 @@ train: kann_t data: bit_data_t lr: lr mini_size: mini_size max_epoch: max_epoch 
 		data: bit_data_t
 		mini_size: mini_size
 		withArraysDo: [ :r :x :y :shuf | 
-			| ua best_cost cost tot |
+			| ua best_cost |
 			"Some init"
 			best_cost := Float infinity.
 
 			"Unroll the RNN"
-			ua := (kann_t unroll: bit_data_t ulen)
-				set_batch_size: mini_size;
-				mt: n_threads maxBatchSize: mini_size;
-				feed_bind: (Libkann constants at: #KANN_F_IN)
-					label: 0
-					arrays: x getHandle;
-				feed_bind: (Libkann constants at: #KANN_F_TRUTH)
-					label: 0
-					arrays: y getHandle;
-				switchToTraining;
-				yourself.
+			ua := self
+				unroll: kann_t
+				data: bit_data_t
+				mini_size: mini_size
+				n_threads: n_threads
+				x: x
+				y: y.
 
 			"Loops."
 			1 to: max_epoch do: [ :epoch | 
+				| cost tot |
 				tot := 0.
 				cost := 0 asFloat.
 				0 to: bit_data_t n - mini_size - 1 by: mini_size do: [ :j | 
@@ -68,7 +65,7 @@ train: kann_t data: bit_data_t lr: lr mini_size: mini_size max_epoch: max_epoch 
 				"update the best cost and save the model in case of a new record."
 				cost < best_cost
 					ifTrue: [ best_cost := cost.
-						kann_t saveToFileNamed: (self modelsPath / 'RNN.kan') fullName.
+						kann_t saveToFileNamed: self rnnModelPath fullName.
 						Transcript traceCr: 'model saved' ].
 
 				"simple debug, sostitute it with the progress bar."

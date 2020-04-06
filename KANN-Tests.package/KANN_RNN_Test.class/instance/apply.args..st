@@ -1,8 +1,7 @@
 tests
-apply: kann_t sum: a sum: b
-	| array result |
+apply: kann_t args: array
+	| result |
 	result := 0.
-	array := Array with: a with: b.
 	kann_t rnn_start.
 	0 to: 63 do: [ :k | 
 		(array collect: [ :each | (each >> k & 1) asFloat ])
