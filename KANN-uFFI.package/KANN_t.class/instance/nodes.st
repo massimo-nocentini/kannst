@@ -1,18 +1,11 @@
 training
 nodes
-	| nodes wrong result type |
-	nodes := self v asArrayOf: #'KAD_node_t *' size: self n.
+	| nodes |
+	"First build the array of pointers to KAD_node_t structures."
+	nodes := self accessor_v
+		asArrayOf: #'KAD_node_t *'
+		size: self accessor_n.
+
+	"Then promote them as first class Smalltalk object"
 	^ nodes
-		collect: [ :externalAddress | "
-
-	type := FFIExternalType resolveType: #KAD_node_t.
-	result := Array
-		streamContents: [ :aStream | 
-			self
-				nodesWithIndexDo: [ :i :each | aStream nextPut: (type basicHandle: each at: 1) ] ].
-
-	
-	self
-		assert: (wrong collect: #getHandle) = (result collect: #getHandle).
-
-	^ result" KAD_node_t fromHandle: externalAddress ]
+		collect: [ :externalAddress | KAD_node_t fromHandle: externalAddress ]

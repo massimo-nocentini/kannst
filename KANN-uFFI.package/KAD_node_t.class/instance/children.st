@@ -11,7 +11,6 @@ children
 		streamContents: [ :aStream | 
 			self
 				childrenWithIndexDo: [ :i :each | aStream nextPut: (self class fromHandle: each) ] ]"
-	self halt.
 	children := self accessor_child
 		asArrayOf: #'KAD_node_t *'
 		size: self accessor_n_child.
