@@ -6,8 +6,9 @@ gtInspectorBackwardTreeIn: composite
 		display: [ self sinks ];
 		children: [ :each | each children ];
 		column: 'type'
-			evaluated: [ :each | self describeTypeOfKAD_node_t: each ];
-		column: 'flag' evaluated: [ :each | each flag ];
-		column: 'ext_flag' evaluated: [ :each | each ext_flag ];
-		column: 'ext_label' evaluated: [ :each | each ext_label ];
+			evaluated: [ :each | self describeTypeOfKAD_node_t: each ]
+			width: 800;
+		column: 'flag' evaluated: [ :each | each flag ] width: 50;
+		column: 'ext_flag' evaluated: [ :each | each ext_flag ] width: 80;
+		column: 'ext_label' evaluated: [ :each | each ext_label ] width: 80;
 		shouldAllExpand: true
