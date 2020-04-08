@@ -15,4 +15,5 @@ testRNN_load
 					result := self apply: kann_t args: (Array with: a with: b).
 					(self value: a value: b) = result
 						ifTrue: [ trues add: (Array with: a with: b with: result) ] ].
+			self halt.
 			self assert: trues size / N > 0.95 ]

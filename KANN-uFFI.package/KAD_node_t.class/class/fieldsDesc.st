@@ -15,5 +15,5 @@ fieldsDesc
 	void       			*ptr;           
 	void       			*gtmp;       
 	void 					*child; 
-	void 	  				*pre;   
+	void					*pre;   
 )
