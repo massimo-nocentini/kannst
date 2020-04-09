@@ -1,5 +1,5 @@
 tests
-testTreeTableVisualization
+testKANN_t_structureFieldAccessors
 	Libkann
 		loadFromFileNamed: (self modelsPath / 'mlp.kan') fullName
 		with: [ :kann_t | 

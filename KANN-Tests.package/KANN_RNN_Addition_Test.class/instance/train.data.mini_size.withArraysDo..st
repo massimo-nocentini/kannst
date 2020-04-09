@@ -1,23 +1,23 @@
 tests
 train: kann_t data: bit_data_t mini_size: mini_size withArraysDo: aBlock
 	FFIArray
-		newArrayTypeOf: #float
+		externalNewTypeOf: #float
 		size: kann_t size_var
 		with: [ :r | 
 			r atAllPut: 0 asFloat.	"to simulate `calloc` behavior"
 			FFIArray
-				newArrayTypeOf: #'void *'
+				externalNewTypeOf: #'void *'
 				size: bit_data_t ulen
 				with: [ :x | 
 					FFIArray
-						newArrayTypeOf: #'void *'
+						externalNewTypeOf: #'void *'
 						size: bit_data_t ulen
 						with: [ :y | 
 							1 to: bit_data_t ulen do: [ :j | 
 								self row: j size: mini_size * bit_data_t n_in array: x.
 								self row: j size: mini_size * 2 array: y ].
 							[ FFIArray
-								newArrayTypeOf: #int
+								externalNewTypeOf: #int
 								size: bit_data_t n
 								with: [ :shuf | 
 									shuf atAllPut: 0.
