@@ -14,4 +14,8 @@ gtInspectorComputationalGraphUsingMondrianBuilder: aMondrian
 				text: [ :vertex | vertex content role ];
 				color: Color black ]
 		edge: [ :shape | shape arrowedBezier ]
-		layout: [ :b | b tree ]
+		layout: [ :b | 
+			b cluster
+				horizontalGap: 100;
+				verticalGap: 100;
+				yourself ]
