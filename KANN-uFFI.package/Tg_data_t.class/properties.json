@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "KANN-uFFI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"len",
+		"n_char",
+		"n_para",
+		"para_len",
+		"data",
+		"para",
+		"c2i"
+	],
+	"name" : "Tg_data_t",
+	"type" : "normal"
+}
