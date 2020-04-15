@@ -1,3 +1,3 @@
 accessing
 len
-	^ len
+	^ data size

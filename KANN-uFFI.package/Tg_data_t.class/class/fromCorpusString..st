@@ -7,7 +7,7 @@ fromCorpusString: aCorpusString
 	tg := self new
 		data: data;
 		yourself.
-	tg data asBag inspect.	"for understanding."
+	"tg data asBag inspect."	"for understanding."
 	tg data do: [ :index | tg c2i at: index put: 1 ].
 	j := 0.
 	1 to: tg c2i size do: [ :index | 
@@ -40,5 +40,5 @@ fromCorpusString: aCorpusString
 	tg data size - st > 0
 		ifTrue: [ tg para at: k put: (tg data copyFrom: st to: tg data size) ].
 	1 to: tg data size do: [ :i | tg data at: i put: (tg c2i at: (tg data at: i)) ].
-	tg data asBag inspect.
+	"tg data asBag inspect."
 	^ tg
