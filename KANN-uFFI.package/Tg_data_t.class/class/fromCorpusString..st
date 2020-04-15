@@ -1,13 +1,12 @@
-tests
-initTg_data_t: tg
-	| j st k slash_N n_para |
-	tg
-		data:
-			((self trainingSourcePath
-				readStreamEncoded: ZnCharacterEncoder iso88591
-				do: [ :aStream | aStream contents ])
-				collect: [ :aCharacter | aCharacter asInteger ]
-				as: Array).
+instance creation
+fromCorpusString: aCorpusString
+	| data tg j st k slash_N n_para |
+	data := aCorpusString
+		collect: [ :aCharacter | aCharacter asInteger ]
+		as: Array.
+	tg := self new
+		data: data;
+		yourself.
 	tg data asBag inspect.	"for understanding."
 	tg data do: [ :index | tg c2i at: index put: 1 ].
 	j := 0.
@@ -42,4 +41,4 @@ initTg_data_t: tg
 		ifTrue: [ tg para at: k put: (tg data copyFrom: st to: tg data size) ].
 	1 to: tg data size do: [ :i | tg data at: i put: (tg c2i at: (tg data at: i)) ].
 	tg data asBag inspect.
-	self halt
+	^ tg

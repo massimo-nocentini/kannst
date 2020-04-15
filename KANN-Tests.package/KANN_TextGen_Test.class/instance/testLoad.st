@@ -1,6 +1,9 @@
 tests
 testLoad
-	| tg |
+	| tg corpus |
 	Libkann srand: 11.
-	tg := Tg_data_t new.
-	self initTg_data_t: tg
+	corpus := self trainingSourcePath
+		readStreamEncoded: ZnCharacterEncoder iso88591
+		do: [ :aStream | aStream contents ].
+	tg := Tg_data_t fromCorpusString: corpus.
+	self halt

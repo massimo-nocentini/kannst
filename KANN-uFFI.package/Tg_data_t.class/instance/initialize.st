@@ -1,8 +1,7 @@
 initialization
 initialize
 	super initialize.
-	len := n_char := n_para := 0.
-	para_len := Array empty.
+	len := n_char := 0.
 	data := Array empty.
 	para := Array empty.
 	c2i := Array new: 256 withAll: 0

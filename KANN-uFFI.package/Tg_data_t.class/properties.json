@@ -8,8 +8,6 @@
 	"instvars" : [
 		"len",
 		"n_char",
-		"n_para",
-		"para_len",
 		"data",
 		"para",
 		"c2i"
