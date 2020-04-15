@@ -1,7 +1,10 @@
 *KANN-uFFI
-asExternalArrayOf: aType with: aBlock
+asExternalArrayOf: aTypeName with: aBlock
 	| eArray |
-	eArray := FFIArray externalNewType: aType size: self size.
+	eArray := FFIArray externalNewType: aTypeName size: self size.
 	self withIndexDo: [ :each :i | eArray at: i put: each ].
-	^ [ aBlock value: eArray ]
+	^ [ aBlock
+		cull: eArray
+		cull: (FFIExternalType resolveType: aTypeName)
+		cull: self ]
 		ensure: [ eArray free ]

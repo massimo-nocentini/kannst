@@ -1,0 +1,21 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "KANN-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"lr",
+		"cs",
+		"max_epoch",
+		"grad_clip",
+		"batch_len",
+		"n_threads",
+		"max_unroll",
+		"burnin_length",
+		"minibatch_size"
+	],
+	"name" : "KANN_TextGen_TrainingSpec",
+	"type" : "normal"
+}

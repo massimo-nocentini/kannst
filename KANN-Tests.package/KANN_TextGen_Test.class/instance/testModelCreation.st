@@ -1,7 +1,6 @@
 tests
 testModelCreation
 	| kad_node_t |
-	Libkann srand: 11.
 	kad_node_t := self
 		network: self gruBlock
 		input: self tg_data_t n_char
