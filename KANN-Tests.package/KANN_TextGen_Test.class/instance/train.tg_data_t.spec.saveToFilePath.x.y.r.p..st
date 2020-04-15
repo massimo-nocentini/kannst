@@ -49,7 +49,7 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 									size: dataFFIArray size - offset.
 								p at: b put: pArray getHandle ].
 							ua nodes
-								reject: [ :kad_node_t | kad_node_t pre isNull ]
+								select: [ :kad_node_t | kad_node_t predecessor isNotNil ]
 								thenDo: [ :kad_node_t | kad_node_t x_memset: 0 ].
 							1 to: spec cs do: [ :c | 
 								| ce_len |
@@ -89,11 +89,11 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 													size: size.
 												yArray at: baseIndex + (pArray at: u) put: 1 asFloat ] ].
 									p at: b put: pHandle + (spec max_unroll * type typeSize).
-									self halt.
+									"self halt.
 									FFIArray
 										fromHandle: (p at: b)
 										type: #int
-										size: spec max_unroll ].
+										size: spec max_unroll" ].
 								cost := (ua cost: 0 type: 1) * spec max_unroll
 									* spec minibatch_size + cost.
 								tot := ce_len * spec minibatch_size.
