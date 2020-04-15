@@ -7,7 +7,6 @@ testTg_data_t_dataAsExternalArray
 			handle := aFFIArray getHandle.
 			self deny: handle isNull.
 
-
 			"Element-wise check"
 			self should: [ type handle: handle at: 0 ] raise: Error.
 			aFFIArray

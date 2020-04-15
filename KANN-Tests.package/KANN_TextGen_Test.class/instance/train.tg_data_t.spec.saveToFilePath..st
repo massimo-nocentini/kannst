@@ -38,6 +38,7 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath
 								externalNewTypeOf: #'uint8 *'
 								size: mbs
 								with: [ :p | 
+									p atAllPut: ExternalAddress null.
 									self
 										train: kann_t
 										tg_data_t: tg
