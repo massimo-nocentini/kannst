@@ -5,6 +5,7 @@ asExternalArrayOf: aTypeName with: aBlock
 	self withIndexDo: [ :each :i | eArray at: i put: each ].
 	^ [ aBlock
 		cull: eArray
+		cull: eArray getHandle
 		cull: (FFIExternalType resolveType: aTypeName)
 		cull: self ]
 		ensure: [ eArray free ]

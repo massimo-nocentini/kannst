@@ -2,9 +2,7 @@ tests
 testTg_data_t_dataAsExternalArray
 	self tg_data_t data
 		asExternalArrayOf: #int
-		with: [ :aFFIArray :type :data | 
-			| handle |
-			handle := aFFIArray getHandle.
+		with: [ :aFFIArray :handle :type :data | 
 			self deny: handle isNull.
 
 			"Element-wise check"

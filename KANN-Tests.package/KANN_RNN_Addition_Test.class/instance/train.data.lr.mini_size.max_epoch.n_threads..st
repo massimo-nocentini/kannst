@@ -42,8 +42,8 @@ train: kann_t data: bit_data_t lr: lr mini_size: mini_size max_epoch: max_epoch 
 								y: y.
 
 							"some increments."
-							cost := (ua cost: 0 grad: 1) * bit_data_t ulen * mini_size
-								+ cost.
+							cost := (ua cost: 0 grad: true asBit) * bit_data_t ulen
+								* mini_size + cost.
 							tot := bit_data_t ulen * mini_size + tot.
 
 							"RMS propogation."

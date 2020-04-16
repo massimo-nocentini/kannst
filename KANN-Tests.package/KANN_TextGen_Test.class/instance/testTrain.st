@@ -11,8 +11,6 @@ testTrain
 	kad_node_t
 		withKANN: [ :kann_t | 
 			| spec |
-			self assert: kann_t dimIn equals: tg n_char.
-
 			"Build the spec for training"
 			spec := KANN_TextGen_TrainingSpec new
 				lr: 0.01;
@@ -20,7 +18,7 @@ testTrain
 				burnin_length: 10;
 				cs: 100;
 				minibatch_size: 64;
-				max_epoch: 50;
+				max_epoch: 3;
 				grad_clip: 10 asFloat;
 				batch_len: 1000000;
 				n_threads: 4;
