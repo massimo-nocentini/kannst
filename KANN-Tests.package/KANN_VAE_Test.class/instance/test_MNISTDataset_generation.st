@@ -18,7 +18,7 @@ test_MNISTDataset_generation
 						eval_state: false asBit;
 						x_drand_normal.
 					handle := kann_t fevalWithFlag: f_out_flag withLabel: 0.
-					handle asArrayOf: #float size: out dimensions ].
+					handle asArrayOf: #float size: out len ].
 
 			"Store new digits in a file"
 			(self dataPath / 'mnist-generated-vae.knd') asFileReference
@@ -29,7 +29,7 @@ test_MNISTDataset_generation
 						nextPutAll:
 							(Character tab
 								join:
-									((0 to: out dimensions - 1)
+									((0 to: out len - 1)
 										collect: [ :i | (i // 28) asString , ':' , (i \\ 28) asString ])).
 					generated
 						withIndexCollect: [ :anArray :i | 
