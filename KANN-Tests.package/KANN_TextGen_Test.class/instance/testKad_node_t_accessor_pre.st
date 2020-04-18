@@ -14,4 +14,4 @@ testKad_node_t_accessor_pre
 				deny:
 					((kann_t nodes
 						collect: [ :t | t pre getHandle = t accessor_pre getHandle ])
-						allSatisfy: [ :aBoolean | aBoolean = true ]) ]
+						allSatisfy: [ :shouldBeTrue | shouldBeTrue ]) ]

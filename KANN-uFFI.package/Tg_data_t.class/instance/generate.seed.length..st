@@ -1,6 +1,6 @@
 as yet unclassified
 generate: kann_t seed: seed length: len
-	| i2c c |
+	| i2c |
 	"Invert the index to character relation."
 	i2c := Array new: self c2i size withAll: 0.
 	c2i
@@ -12,18 +12,47 @@ generate: kann_t seed: seed length: len
 		thenDo: [ :kad_node_t | 
 			| x |
 			x := kad_node_t values.
-			x allSatisfy: [ :each | each = 0 ].
+			"			self assert: (x allSatisfy: [ :each | each = 0 ])."
 			1 to: x size do: [ :i | x at: i put: (Libkautodiff drand * 2 - 1) asFloat ] ].
-	c := seed
-		ifNil: [ c2i at: Character space asInteger ]
-		ifNotNil: [ self shouldBeImplemented ].
 	^ String
 		streamContents: [ :aStream | 
-			| yHandle y s r |
+			| c |
+			c := seed
+				ifNil: [ c2i at: Character space asInteger ]
+				ifNotNil: [ FFIArray
+						externalNewTypeOf: #float
+						size: n_char
+						with: [ :x | 
+							| cc |
+							cc := kann_t accessor_n.
+							seed
+								do: [ :aChar | 
+									| max max_c yHandle y |
+									max := 1 asFloat negated.
+									max_c := 0.
+									cc := c2i at: aChar asInteger.
+									x
+										atAllPut: 0 asFloat;
+										at: cc + 1 put: 1 asFloat.
+									yHandle := kann_t apply1: x getHandle.
+									y := yHandle asArrayOf: #float size: kann_t dimOut.
+									y
+										withIndexDo: [ :each :i | 
+											max < each
+												ifTrue: [ max := each.
+													max_c := i ] ].
+									cc := max_c ].
+							aStream nextPutAll: seed.
+							(i2c at: cc) asCharacter
+								in: [ :char | 
+									char = Character null
+										ifFalse: [ aStream nextPut: char ] ].
+							cc - 1 ] ].
 			FFIArray
 				externalNewTypeOf: #float
 				size: n_char
 				with: [ :x | 
+					| yHandle y s r |
 					len
 						timesRepeat: [ | continue |
 							x

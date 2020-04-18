@@ -1,5 +1,5 @@
 tests
-testGenerate
+testGenerate_NilSeed
 	| tg |
 	"Prepare the corpus"
 	tg := Tg_data_t fromCorpusPath: self dataPath / 'inferno.txt'.
@@ -7,10 +7,9 @@ testGenerate
 	"Load the trained network."
 	Libkann
 		srand: 11;
-		loadFromFileNamed:
-			'/home/mn/Developer/working-copies/anns/kann/examples/text-inferno.kan'
+		loadFromFileNamed: (self modelsPath / 'text-inferno.kan') fullName
 			with: [ :kann_t | 
-			| aStream temperature |
+			| temperature |
 			"Prepare the initial node"
 			temperature := 0.4.
 			(kann_t find_node: 0 label: -1) values
@@ -18,9 +17,8 @@ testGenerate
 				put: temperature reciprocal asFloat.
 			kann_t
 				switchToPrediction;
-				rnn_run: [ aStream := tg generate: kann_t seed: nil length: 1000.
-					self
-						assert: aStream
+				rnn_run: [ self
+						assert: (tg generate: kann_t seed: nil length: 1000)
 						equals:
 							'lor disse: <<Or denti e` Noi anza!>>,
 disse ''l maestro, <<che ''l tuo non e` stato;
