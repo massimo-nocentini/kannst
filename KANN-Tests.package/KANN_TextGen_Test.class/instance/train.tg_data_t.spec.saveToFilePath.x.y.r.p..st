@@ -46,7 +46,7 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 							"Update x values just for nodes that have a valid predecessor."
 							ua nodes
 								select: [ :kad_node_t | kad_node_t predecessor isNotNil ]
-								thenDo: [ :kad_node_t | kad_node_t x_memset: 0 ].
+								thenDo: [ :kad_node_t | kad_node_t values atAllPut: 0 asFloat ].
 							1 to: spec cs do: [ :c | 
 								"Cleanup both matrices x and y."
 								self
@@ -83,6 +83,8 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 								"Grad clips"
 								spec grad_clip > 0
 									ifTrue: [ Libkann grad_clip: spec grad_clip n: r size g: ua g ].
+
+								"Do one-step training"
 								Libkann
 									RMSprop: r size
 									lr: spec lr

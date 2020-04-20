@@ -3,7 +3,7 @@ p: p first: pFirst array: anArray handle: handle type: type baseOffset: dataBase
 	^ (1 to: p size)
 		collect: [ :b | 
 			| offset pArray |
-			offset := (Libkautodiff drand * dataBaseOffset) truncated.
+			offset := (Libkautodiff drand * dataBaseOffset) floor.
 			pFirst
 				at: b
 				put: (type handle: handle + (type typeSize * offset) at: 1).

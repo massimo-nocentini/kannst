@@ -18,7 +18,7 @@ testTrain
 				burnin_length: 10;
 				cs: 100;
 				minibatch_size: 64;
-				max_epoch: 3;
+				max_epoch: 2;
 				grad_clip: 10 asFloat;
 				batch_len: 1000000;
 				n_threads: 1;
