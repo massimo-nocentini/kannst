@@ -1,7 +1,7 @@
 tests
 testLoad
 	| tg |
-	tg := self tg_data_t.
+	tg := self tg_data_t_Accelerando.
 	self assert: tg n_para equals: 2835.
 	self assert: tg n_char equals: 91.
 	self assert: tg len equals: 854339.

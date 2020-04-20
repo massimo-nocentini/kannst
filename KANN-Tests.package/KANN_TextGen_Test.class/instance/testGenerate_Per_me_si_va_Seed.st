@@ -1,10 +1,7 @@
 tests
-testGenerate_Per_me_si_va
-	| tg |
-	"Prepare the corpus"
-	tg := Tg_data_t fromCorpusPath: self dataPath / 'inferno.txt'.
-
+testGenerate_Per_me_si_va_Seed
 	"Load the trained network."
+
 	Libkann
 		srand: 11;
 		loadFromFileNamed: (self modelsPath / 'text-inferno.kan') fullName
@@ -18,7 +15,11 @@ testGenerate_Per_me_si_va
 			kann_t
 				switchToPrediction;
 				rnn_run: [ self
-						assert: (tg generate: kann_t seed: 'Per me si va' length: 1000)
+						assert:
+							(self tg_data_t_Inferno
+								generate: kann_t
+								seed: 'Per me si va'
+								length: 1000)
 						equals:
 							'Per me si va i crendessate,
 la somma sapienza e ''l primo amore.

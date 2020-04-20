@@ -1,10 +1,7 @@
 tests
 testGenerate_NilSeed
-	| tg |
-	"Prepare the corpus"
-	tg := Tg_data_t fromCorpusPath: self dataPath / 'inferno.txt'.
-
 	"Load the trained network."
+
 	Libkann
 		srand: 11;
 		loadFromFileNamed: (self modelsPath / 'text-inferno.kan') fullName
@@ -18,7 +15,7 @@ testGenerate_NilSeed
 			kann_t
 				switchToPrediction;
 				rnn_run: [ self
-						assert: (tg generate: kann_t seed: nil length: 1000)
+						assert: (self tg_data_t_Inferno generate: kann_t seed: nil length: 1000)
 						equals:
 							'lor disse: <<Or denti e` Noi anza!>>,
 disse ''l maestro, <<che ''l tuo non e` stato;

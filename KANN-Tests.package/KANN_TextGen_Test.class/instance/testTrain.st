@@ -2,11 +2,11 @@ tests
 testTrain
 	| kad_node_t tg |
 	Libkann srand: 11.
-	tg := self tg_data_t.
+	tg := self tg_data_t_Accelerando.
 	kad_node_t := self
 		network: self gruBlock
 		input: tg n_char
-		neurons: {160 . 160 . 160}
+		neurons: {128}
 		dropout: 0 asFloat.
 	kad_node_t
 		withKANN: [ :kann_t | 
@@ -21,7 +21,7 @@ testTrain
 				max_epoch: 3;
 				grad_clip: 10 asFloat;
 				batch_len: 1000000;
-				n_threads: 4;
+				n_threads: 1;
 				yourself.
 
 			"Train, really."

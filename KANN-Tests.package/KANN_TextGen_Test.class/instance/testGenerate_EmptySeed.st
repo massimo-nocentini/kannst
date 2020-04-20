@@ -1,10 +1,7 @@
 tests
 testGenerate_EmptySeed
-	| tg |
-	"Prepare the corpus"
-	tg := Tg_data_t fromCorpusPath: self dataPath / 'inferno.txt'.
-
 	"Load the trained network."
+
 	Libkann
 		srand: 11;
 		loadFromFileNamed: (self modelsPath / 'text-inferno.kan') fullName
@@ -18,7 +15,7 @@ testGenerate_EmptySeed
 			kann_t
 				switchToPrediction;
 				rnn_run: [ self
-						assert: (tg generate: kann_t seed: '' length: 1000)
+						assert: (self tg_data_t_Inferno generate: kann_t seed: '' length: 1000)
 						equals:
 							'iron di tua verna e graviena
 ne/ so che fa i siemenza il fuso e conte;

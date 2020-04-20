@@ -1,7 +1,7 @@
 tests
 testKad_node_t_accessor_pre
 	| kad_node_t tg |
-	tg := self tg_data_t.
+	tg := self tg_data_t_Accelerando.
 	kad_node_t := self
 		network: self gruBlock
 		input: tg n_char

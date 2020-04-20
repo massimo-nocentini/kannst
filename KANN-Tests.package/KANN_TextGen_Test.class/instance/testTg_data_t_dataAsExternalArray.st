@@ -1,6 +1,6 @@
 tests
 testTg_data_t_dataAsExternalArray
-	self tg_data_t data
+	self tg_data_t_Accelerando data
 		asExternalArrayOf: #int
 		with: [ :aFFIArray :handle :type :data | 
 			self deny: handle isNull.
