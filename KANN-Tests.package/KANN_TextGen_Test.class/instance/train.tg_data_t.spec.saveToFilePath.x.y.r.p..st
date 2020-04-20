@@ -32,6 +32,8 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 						tot := 0.
 						ctot := 0.
 						n_cerr := 0.
+
+						"Start iterating by batches."
 						1 to: batch_len by: step do: [ :i | 
 							| pRows |
 							"Compute the rows of the matrix p that have to be tails of `tg data`"
@@ -47,6 +49,8 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 							ua nodes
 								select: [ :kad_node_t | kad_node_t predecessor isNotNil ]
 								thenDo: [ :kad_node_t | kad_node_t values atAllPut: 0 asFloat ].
+
+							"Iterate again."
 							1 to: spec cs do: [ :c | 
 								"Cleanup both matrices x and y."
 								self

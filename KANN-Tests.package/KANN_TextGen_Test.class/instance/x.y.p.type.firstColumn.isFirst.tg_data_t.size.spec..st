@@ -18,13 +18,4 @@ x: x y: y p: p type: type firstColumn: pFirst isFirst: isFirst tg_data_t: tg siz
 					yArray := FFIArray fromHandle: (y at: u) type: #float size: size.
 					yArray at: baseIndex + (pArray at: u) put: 1 asFloat ] ].
 		pFirst at: b put: pArray last.
-		p at: b put: (p at: b) + (pArray size * type typeSize)
-		"
-				(type
-					handle: (p at: b) + ((spec max_unroll - 1) * type typeSize)
-					at: 1)"
-		"self halt.
-									FFIArray
-										fromHandle: (p at: b)
-										type: #int
-										size: spec max_unroll" ]
+		p at: b put: (p at: b) + (pArray size * type typeSize) ]
