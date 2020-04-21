@@ -1,4 +1,4 @@
-tests
+training
 train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 	| batch_len step dataBaseOffset diff size pFirst prod |
 	"Some inits"
@@ -11,7 +11,7 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 	pFirst := Array new: p size withAll: nil.
 
 	"Unroll the network."
-	kann_t
+	^ kann_t
 		unroll: spec max_unroll
 		with: [ :ua | 
 			"Start the unrolled network and setup the connections with x and y."
@@ -25,9 +25,9 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 			tg data
 				asExternalArrayOf: #int
 				with: [ :dataFFIArray :handle :type | 
-					| cost tot ctot n_cerr |
 					"Running over epochs"
 					1 to: spec max_epoch do: [ :epoch | 
+						| cost tot ctot n_cerr |
 						cost := 0 asFloat.
 						tot := 0.
 						ctot := 0.
@@ -108,4 +108,9 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p
 										(n_cerr / ctot * 100) asFloat}).
 
 						"Finally, save the current model."
-						kann_t saveToFileNamed: aPath fullName ] ] ]
+						kann_t saveToFileNamed: aPath fullName.
+
+						"Return the tuple to collect stats."
+						Array
+							with: (cost / tot) asFloat
+							with: (n_cerr / ctot * 100) asFloat ] ] ]

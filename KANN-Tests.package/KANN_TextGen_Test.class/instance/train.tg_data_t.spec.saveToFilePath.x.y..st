@@ -1,4 +1,4 @@
-tests
+training
 train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y
 	^ FFIArray
 		externalNewTypeOf: #float

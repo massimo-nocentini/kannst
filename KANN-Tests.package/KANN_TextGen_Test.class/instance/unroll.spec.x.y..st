@@ -1,4 +1,4 @@
-tests
+training
 unroll: ua spec: spec x: x y: y
 	ua
 		urnn_start: spec minibatch_size;

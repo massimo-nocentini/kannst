@@ -1,4 +1,4 @@
-as yet unclassified
+training
 x: x y: y p: p type: type firstColumn: pFirst isFirst: isFirst tg_data_t: tg size: size spec: spec
 	1 to: spec minibatch_size do: [ :b | 
 		| pArray baseIndex |

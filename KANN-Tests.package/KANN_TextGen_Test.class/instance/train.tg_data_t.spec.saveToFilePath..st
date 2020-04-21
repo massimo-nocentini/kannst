@@ -1,10 +1,10 @@
-tests
+training
 train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath
 	| n_char ulen mbs |
 	n_char := kann_t dimIn.
 	ulen := spec max_unroll.
 	mbs := spec minibatch_size.
-	FFIArray
+	^ FFIArray
 		externalNewTypeOf: #'float *'
 		size: ulen
 		with: [ :x | 
@@ -14,6 +14,8 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath
 				with: [ :y | 
 					| size |
 					size := n_char * mbs.
+
+					"Prepare inner arrays for matrices x and y."
 					1 to: ulen do: [ :u | 
 						| xArray yArray |
 						"For array of arrays x"
@@ -36,5 +38,6 @@ train: kann_t tg_data_t: tg spec: spec saveToFilePath: aPath
 						saveToFilePath: aPath
 						x: x
 						y: y ]
-						ensure: [ x do: [ :aFFIArray | aFFIArray free ].
+						ensure: [ "Free arrays holded in both x and y"
+							x do: [ :aFFIArray | aFFIArray free ].
 							y do: [ :aFFIArray | aFFIArray free ] ] ] ]

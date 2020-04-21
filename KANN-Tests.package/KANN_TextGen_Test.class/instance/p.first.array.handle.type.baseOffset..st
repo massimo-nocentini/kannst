@@ -1,4 +1,4 @@
-as yet unclassified
+training
 p: p first: pFirst array: anArray handle: handle type: type baseOffset: dataBaseOffset
 	^ (1 to: p size)
 		collect: [ :b | 
