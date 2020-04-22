@@ -1,4 +1,4 @@
-as yet unclassified
+training
 train: ua tg_data_t: tg spec: spec saveToFilePath: aPath x: x y: y r: r p: p data: trainingData
 	| cost tot ctot n_cerr |
 	cost := 0 asFloat.
