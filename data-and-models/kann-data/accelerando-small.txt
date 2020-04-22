@@ -1,0 +1,59 @@
+PART 1: Slow Takeoff
+
+"The question of whether a computer can think is no more interesting than the question of whether a submarine can swim."
+
+- Edsger W. Dijkstra
+
+Chapter 1: Lobsters
+
+Manfred's on the road again, making strangers rich.
+
+It's a hot summer Tuesday, and he's standing in the plaza in front of the Centraal Station with his eyeballs powered up and the sunlight jangling off the canal, motor scooters and kamikaze cyclists whizzing past and tourists chattering on every side. The square smells of water and dirt and hot metal and the fart-laden exhaust fumes of cold catalytic converters; the bells of trams ding in the background, and birds flock overhead. He glances up and grabs a pigeon, crops the shot, and squirts it at his weblog to show he's arrived. The bandwidth is good here, he realizes; and it's not just the bandwidth, it's the whole scene. Amsterdam is making him feel wanted already, even though he's fresh off the train from Schiphol: He's infected with the dynamic optimism of another time zone, another city. If the mood holds, someone out there is going to become very rich indeed.
+
+He wonders who it's going to be.
+
+* * *
+
+Manfred sits on a stool out in the car park at the Brouwerij 't IJ, watching the articulated buses go by and drinking a third of a liter of lip-curlingly sour gueuze. His channels are jabbering away in a corner of his head-up display, throwing compressed infobursts of filtered press releases at him. They compete for his attention, bickering and rudely waving in front of the scenery. A couple of punks - maybe local, but more likely drifters lured to Amsterdam by the magnetic field of tolerance the Dutch beam across Europe like a pulsar - are laughing and chatting by a couple of battered mopeds in the far corner. A tourist boat putters by in the canal; the sails of the huge windmill overhead cast long, cool shadows across the road. The windmill is a machine for lifting water, turning wind power into dry land: trading energy for space, sixteenth-century style. Manfred is waiting for an invite to a party where he's going to meet a man he can talk to about trading energy for space, twenty-first-century style, and forget about his personal problems.
+
+He's ignoring the instant messenger boxes, enjoying some low-bandwidth, high-sensation time with his beer and the pigeons, when a woman walks up to him, and says his name: "Manfred Macx?"
+
+He glances up. The courier is an Effective Cyclist, all wind-burned smooth-running muscles clad in a paean to polymer technology: electric blue lycra and wasp yellow carbonate with a light speckling of anti collision LEDs and tight-packed air bags. She holds out a box for him. He pauses a moment, struck by the degree to which she resembles Pam, his ex-fiance.
+
+"I'm Macx," he says, waving the back of his left wrist under her bar-code reader. "Who's it from?"
+
+"FedEx." The voice isn't Pam's. She dumps the box in his lap, then she's back over the low wall and onto her bicycle with her phone already chirping, disappearing in a cloud of spread-spectrum emissions.
+
+Manfred turns the box over in his hands: it's a disposable supermarket phone, paid for in cash - cheap, untraceable, and efficient. It can even do conference calls, which makes it the tool of choice for spooks and grifters everywhere.
+
+The box rings. Manfred rips the cover open and pulls out the phone, mildly annoyed. "Yes? Who is this?"
+
+The voice at the other end has a heavy Russian accent, almost a parody in this decade of cheap on-line translation services. "Manfred. Am please to meet you. Wish to personalize interface, make friends, no? Have much to offer."
+
+"Who are you?" Manfred repeats suspiciously.
+
+"Am organization formerly known as KGB dot RU."
+
+"I think your translator's broken." He holds the phone to his ear carefully, as if it's made of smoke-thin aerogel, tenuous as the sanity of the being on the other end of the line.
+
+"Nyet - no, sorry. Am apologize for we not use commercial translation software. Interpreters are ideologically suspect, mostly have capitalist semiotics and pay-per-use APIs. Must implement English more better, yes?"
+
+Manfred drains his beer glass, sets it down, stands up, and begins to walk along the main road, phone glued to the side of his head. He wraps his throat mike around the cheap black plastic casing, pipes the input to a simple listener process. "Are you saying you taught yourself the language just so you could talk to me?"
+
+"Da, was easy: Spawn billion-node neural network, and download Teletubbies and Sesame Street at maximum speed. Pardon excuse entropy overlay of bad grammar: Am afraid of digital fingerprints steganographically masked into my-our tutorials."
+
+Manfred pauses in mid stride, narrowly avoids being mown down by a GPS-guided roller blader. This is getting weird enough to trip his weird-out meter, and that takes some doing. Manfred's whole life is lived on the bleeding edge of strangeness, fifteen minutes into everyone else's future, and he's normally in complete control - but at times like this he gets a frisson of fear, a sense that he might just have missed the correct turn on reality's approach road. "Uh, I'm not sure I got that. Let me get this straight, you claim to be some kind of AI, working for KGB dot RU, and you're afraid of a copyright infringement lawsuit over your translator semiotics?"
+
+"Am have been badly burned by viral end-user license agreements. Have no desire to experiment with patent shell companies held by Chechen infoterrorists. You are human, you must not worry cereal company repossess your small intestine because digest unlicensed food with it, right? Manfred, you must help me-we. Am wishing to defect."
+
+Manfred stops dead in the street. "Oh man, you've got the wrong free enterprise broker here. I don't work for the government. I'm strictly private." A rogue advertisement sneaks through his junkbuster proxy and spams glowing fifties kitsch across his navigation window - which is blinking - for a moment before a phage process kills it and spawns a new filter. He leans against a shop front, massaging his forehead and eyeballing a display of antique brass doorknockers. "Have you tried the State Department?"
+
+"Why bother? State Department am enemy of Novy-SSR. State Department is not help us."
+
+This is getting just too bizarre. Manfred's never been too clear on new-old old-new European metapolitics: Just dodging the crumbling bureaucracy of his old-old American heritage gives him headaches. "Well, if you hadn't shafted them during the late noughties ... " Manfred taps his left heel on the pavement, looking round for a way out of this conversation. A camera winks at him from atop a streetlight; he waves, wondering idly if it's the KGB or the traffic police. He is waiting for directions to the party, which should arrive within the next half hour, and this Cold War retread Eliza-bot is bumming him out. "Look, I don't deal with the G-men. I hate the military-industrial complex. I hate traditional politics. They're all zero-sum cannibals." A thought occurs to him. "If survival is what you're after, you could post your state vector on one of the p2p nets: Then nobody could delete you -"
+
+"Nyet!" The artificial intelligence sounds as alarmed as it's possible to sound over a VoiP link. "Am not open source! Not want lose autonomy!"
+
+"Then we probably have nothing to talk about." Manfred punches the hang-up button and throws the mobile phone out into a canal. It hits the water, and there's a pop of deflagrating lithium cells. "Fucking Cold War hangover losers," he swears under his breath, quite angry, partly at himself for losing his cool and partly at the harassing entity behind the anonymous phone call. "Fucking capitalist spooks." Russia has been back under the thumb of the apparatchiks for fifteen years now, its brief flirtation with anarchocapitalism replaced by Brezhnevite dirigisme and Putinesque puritanism, and it's no surprise that the wall's crumbling - but it looks like they haven't learned anything from the current woes afflicting the United States. The neocommies still think in terms of dollars and paranoia. Manfred is so angry that he wants to make someone rich, just to thumb his nose at the would-be defector: See! You get ahead by giving! Get with the program! Only the generous survive! But the KGB won't get the message. He's dealt with old-time commie weak-AIs before, minds raised on Marxist dialectic and Austrian School economics: They're so thoroughly hypnotized by the short-term victory of global capitalism that they can't surf the new paradigm, look to the longer term.
+
+Manfred walks on, hands in pockets, brooding. He wonders what he's going to patent next.
