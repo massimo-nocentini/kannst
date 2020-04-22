@@ -1,0 +1,23 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "KANN-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"batch_len",
+		"step",
+		"diff",
+		"pFirst",
+		"dataFFIArray",
+		"handle",
+		"type",
+		"dataBaseOffset",
+		"ua",
+		"spec",
+		"size"
+	],
+	"name" : "KANN_TextGen_TrainingData",
+	"type" : "normal"
+}
